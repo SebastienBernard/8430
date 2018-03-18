@@ -1,58 +1,41 @@
+// App.js
+
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ReactDOM from "react-dom";
+
+// Permet de faire un onePager
+import {
+  Route,
+  NavLink,
+  HashRouter
+} from "react-router-dom";
+
+//Ce sont toutes les pages différentes
+import Header from './components/Header';
+import SideBar from './components/SideBar';
+
+import Playlists from './components/Playlists';
+import Browse from './components/Browse';
+import Search from './components/Search';
+import Settings from './components/Settings';
+import AudioPlayer from './components/AudioPlayer';
+
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      message: null,
-      fetching: true
-    };
-  }
-
-  componentDidMount() {
-    fetch('/api')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`status ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(json => {
-        this.setState({
-          message: json.message,
-          fetching: false
-        });
-      }).catch(e => {
-        this.setState({
-          message: `API call failed: ${e}`,
-          fetching: false
-        });
-      })
-  }
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          {'This is '}
-          <a href="https://github.com/mars/heroku-cra-node">
-            {'create-react-app with a custom Node/Express server'}
-          </a><br/>
-        </p>
-        <p className="App-intro">
-          {this.state.fetching
-            ? 'Fetching message from API'
-            : this.state.message}
-        </p>
+      <div>
+        <Header />
+        <SideBar />       
+        <Route exact path="/" component={Playlists}/>
+        <Route path="/Search" component={Search}/>
+        <Route path="/Settings" component={Settings}/>
+        <AudioPlayer /> 
       </div>
     );
   }
 }
+
 
 export default App;
