@@ -3,37 +3,75 @@
 import React, {Component} from 'react';
 
 export default class Search extends Component {
+
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            song : []
+        };
+      }
+
+
+    componentDidMount() {
+
+    }
+
+    onChange() {
+        fetch('/api')
+        .then(response => {
+            if (response.ok) {
+                return response.json(); 
+            }
+      
+        }).then(json => {
+            debugger;
+            this.setState({song : json});
+        })
+        .catch(e => {
+          this.setState({
+            message: `API call failed: ${e}`,
+            fetching: false
+          });
+        })
+
+        this.setState({ showMe : true} );
+     }
+
+    
     render(){
         return (
             <div className="content-wrapper">
+        
                 <section className="content-header">
+
                     <div className="row">
-                        <div className="col-md-12">
-                            <div className="box">
-                                <div className="box-header with-border">
-                                    <h3 className="box-title">Search</h3>
-                                </div>
-                                <div className="box-body">
-                                    <div className="row">
-                                        <div className="col-md-8">
-                                            <p className="text-center">
-                                                <strong>This is text</strong>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="box-footer">
-                                    <div className="row">
-                                        <div className="col-sm-3 col-xs-6">
-                                            <div className="description-block border-right">
-                                                <span className="description-percentage text-green"><i className="fa fa-caret-up"></i> 17%</span>
-                                                <h5 className="description-header">$35,210.43</h5>
-                                                <span className="description-text">TOTAL REVENUE</span>
-                                            </div>
-                                        </div>    
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="input-group">
+                            <input id="song-search" type="text" className="form-control"  onChange={this.onChange.bind(this)} placeholder="Username" aria-describedby="basic-addon1" />
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-sm">
+                            <h2>Song</h2>
+                            <table className="table table-dark table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Supplier</th>
+                                    <th>song name</th>
+
+                                </tr>
+                                </thead>
+                                <tbody id="song-list">
+                                    {
+                                        this.state.song.map(function(song){
+                                       
+                                         return(
+                                         <tr><td>  {song.Supplier}  </td><td> {song.Name}  </td></tr>
+                                         )
+                                    })}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </section>

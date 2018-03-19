@@ -1,4 +1,3 @@
-  var Spotify = require('spotify-web-api-js');
 var accessToken = null;
 
 var spotifyPlayer = new SpotifyPlayer();

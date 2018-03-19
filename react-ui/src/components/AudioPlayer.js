@@ -27,7 +27,7 @@ export default class Header extends Component {
 
 
             <div id="waveform"></div>
-            <div id="bar"></div>
+         
             <div id="progress"></div>
 
             <div id="playlist">
