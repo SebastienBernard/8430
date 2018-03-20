@@ -41,9 +41,9 @@ export default class Search extends Component {
     
     render(){
         return (
-            <div className="content-wrapper">
+            <div className="content-wrapper" >
         
-                <section className="content-header">
+                <section>
 
                     <div className="row">
                         <div className="input-group">
@@ -67,7 +67,7 @@ export default class Search extends Component {
                                         this.state.song.map(function(song){
                                        
                                          return(
-                                         <tr><td>  {song.Supplier}  </td><td> {song.Name}  </td></tr>
+                                         <tr><td>  {song.Supplier}  </td><td><div className="row"><div>{song.Name}</div>  <button type="button" class="btn btn-success float-right">Play</button> <button type="button" class="btn btn-secondary float-right">Add to playlist</button></div> </td></tr>
                                          )
                                     })}
                                 </tbody>

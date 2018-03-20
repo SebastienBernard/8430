@@ -27,8 +27,11 @@ if (cluster.isMaster) {
   // Answer API requests.
   app.get('/api', function (req, res) {
     res.set('Content-Type', 'application/json');
-    var answer = JSON.stringify([{Name:"bonjour",Supplier:"spotify"},{Name:"bonjour",Supplier:"spotify"}]);
-    res.send(answer);
+    res.send(JSON.stringify([
+      {Supplier:"bonjour",Name:"Bonjour"},
+      {Supplier:"babye",Name:"babye"}
+    ]
+    ));
   });
 
   app.listen(PORT, function () {
