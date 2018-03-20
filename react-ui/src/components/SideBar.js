@@ -8,7 +8,7 @@ import {
   } from "react-router-dom";
   
 
-import logo from '../avatar5.png';
+import logo from '../avatar5.png';          
 
 export default class SideBar extends Component {
     render(){
@@ -34,7 +34,9 @@ export default class SideBar extends Component {
                         </div>
                     </form>
                     <ul className="sidebar-menu" data-widget="tree">
-                        <li className="header">MENU NAVIGATION</li>
+                        <li className="header">
+                            <div class="btn" id="playBtn"></div>
+                        </li>
                         <li>
                         <NavLink to="/">
                             <i className="fa fa-th"></i> <span>Playlists</span>
@@ -58,6 +60,7 @@ export default class SideBar extends Component {
                         </li>
                     </ul>
                 </section>
+                
             </aside> 
         )
     }

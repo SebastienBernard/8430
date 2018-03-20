@@ -31,7 +31,7 @@ class App extends Component {
         <Route exact path="/" component={Playlists}/>
         <Route path="/Search" component={Search}/>
         <Route path="/Settings" component={Settings}/>
-        <AudioPlayer /> 
+    
       </div>
     );
   }

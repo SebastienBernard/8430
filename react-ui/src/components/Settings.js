@@ -10,7 +10,7 @@ import soundcloudLogo from '../soundcloud.png';
 export default class Settings extends Component {
     render(){
         return (
-            <div id="playlist-section" className="content-wrapper">
+            <div id="playlist-section" className="content-wrapper"  >
                 <section className="content-header">
                 <div  className="row">
                    <h1 class="text-center">Settings</h1>   
