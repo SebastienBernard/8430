@@ -61,11 +61,11 @@ export default class Playlists extends Component {
         return (
 
             <div id="playlist-section" className="content-wrapper" >
-                <section >
+                <section className="content-header">
                 <div className="row">
                     <div className="col-sm">
                         <h2>Playlists</h2>
-                        <table className="table table-dark table-striped">
+                        <table className="table table-dark table-striped table-hover">
                             <thead>
                             <tr>
                                 <th>Playlist name</th>
@@ -85,7 +85,7 @@ export default class Playlists extends Component {
                     </div>
                     <div className="col-sm">
                         <h2>Playlist content</h2>
-                        <table className="table table-dark table-striped">
+                        <table className="table table-dark table-striped table-hover">
                             <thead>
                             <tr>
                                 <th>Supplier</th>

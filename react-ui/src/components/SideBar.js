@@ -6,7 +6,6 @@ import {
     NavLink,
     HashRouter
   } from "react-router-dom";
-  
 
 import logo from '../avatar5.png';          
 
@@ -35,7 +34,7 @@ export default class SideBar extends Component {
                     </form>
                     <ul className="sidebar-menu" data-widget="tree">
                         <li className="header">
-                            <div class="btn" id="playBtn"></div>
+                            <div class="btn-audio" id="playBtn"></div>
                         </li>
                         <li>
                         <NavLink to="/">
