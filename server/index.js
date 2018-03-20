@@ -24,8 +24,8 @@ if (cluster.isMaster) {
   // Priority serve any static files.
   app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
-  // Answer API requests.
-  app.get('/api', function (req, res) {
+
+  app.get('/api', function (req, res) {	  
     res.set('Content-Type', 'application/json');
     res.send(JSON.stringify([
       {Supplier:"bonjour",Name:"Bonjour"},
@@ -33,6 +33,17 @@ if (cluster.isMaster) {
     ]
     ));
   });
+  // Answer API requests.
+  app.post('/api', function (req, res) {	  
+    res.set('Content-Type', 'application/json');
+    res.send(JSON.stringify([
+      {Supplier:"bonjour",Name:"Bonjour"},
+      {Supplier:"babye",Name:"babye"}
+    ]
+    ));
+  });
+
+
 
   app.listen(PORT, function () {
     console.error(`Node cluster worker ${process.pid}: listening on port ${PORT}`);
