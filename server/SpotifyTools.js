@@ -12,7 +12,7 @@ module.exports = {
 		text += possible.charAt(Math.floor(Math.random() * possible.length));
 	  }
 	  return text;
-	};
+	},
 	
 	SongSearch: function (searchterm) {
 
@@ -44,7 +44,7 @@ module.exports = {
 			console.log('Something went wrong!', err);
 		  });
 
-	}
+	},
 	
 	Username: function () {
 		
