@@ -38,10 +38,25 @@ module.exports = {
 							})
 					}
 					
-					
+			return SearchArr;		
+			
 		  }, function(err) {
 			console.log('Something went wrong!', err);
 		  });
 
+	}
+	
+	Username: function () {
+		
+		spotifyApi.getMe()
+	  .then(function(data) {
+		  
+		  return data.body.display_name;
+				
+	  }, function(err) {
+		console.log('Something went wrong!', err);
+	  });
+			
+		
 	}
 }

@@ -13,6 +13,7 @@ var fs = require('fs');
 
 
 var SearchTool = require('./SpotifyTools');
+var playlists = require('./PlaylistManager');
 
 var client_id = 'ab85096602544cd1a072309a632747ff'; // Your client id
 var client_secret = 'c967f17bd14341619864cc17b898a908'; // Your secret
@@ -172,14 +173,14 @@ app.post('/search', jsonParser, function(req, res {
     res.send(answer);
 }
 
-app.post('/addPlaylist, function(req, res {
+app.post('/addPlaylist', function(req, res {
 	res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
 	res.set('Content-Type', 'application/json');
 	//On ajoute la playlist a la BD et en retour on renvoi la nouvelle BD pour un update live.
-	var playlistName = req.body.Name;
-    var answer = SearchTool.AddPlaylist();
+	var currentUser = SearchTool.Username;
+    var newList = SearchTool.AddPlaylist(currentUser,req.body.Name);
     res.send(answer);
 }
 
