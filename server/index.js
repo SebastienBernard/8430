@@ -184,6 +184,14 @@ app.post('/addPlaylist', function(req, res {
     res.send(answer);
 }
 
+  app.get('/api', function (req, res) {
+     res.set('Content-Type', 'application/json');
+   res.send(JSON.stringify([
+     {Supplier:"Spotify",Name:"Staying Alive"},
+     {Supplier:"Spotify",Name:"La Bamba"}
+   ]
+   ));
+
   app.listen(PORT, function () {
     console.error(`Node cluster worker ${process.pid}: listening on port ${PORT}`);
   });
