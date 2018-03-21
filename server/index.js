@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
+const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 5000;
 
@@ -9,6 +10,7 @@ var request = require('request'); // "Request" library
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var fs = require('fs');
+
 
 var SearchTool = require('./SpotifyTools');
 
@@ -37,6 +39,10 @@ var stateKey = 'spotify_auth_state';
 
 app.use(express.static(__dirname + '/public'))
    .use(cookieParser());
+   
+var jsonParser = bodyParser.json()
+ 
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
    //LOGIN
 app.get('/login', function(req, res) {
@@ -146,9 +152,11 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
-app.get('/search', function(req, res {
+app.post('/search', jsonParser, function(req, res {
 	res.set('Content-Type', 'application/json');
-    var answer = JSON.stringify([{Name:"bonjour",Supplier:"spotify"},{Name:"bonjour",Supplier:"spotify"}]);
+	//On prend ici le parametre pour la recherche, soit req.body.SearchName
+	//La fonction SongSearch de de SpotifyTools utilise cette donnée pour aller chercher les answers en forme json
+    var answer = SearchTool.SongSearch(req.body.SearchName);
     res.send(answer);
 }
 

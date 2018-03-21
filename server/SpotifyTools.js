@@ -28,8 +28,7 @@ module.exports = {
 		  
 		var PlaylistTestID = 'string';  
 		  
-		  //Dans le serveur: prendre a capture les inputs de la bar et remplacer dans le field de spotifyApi.searchTracks()
-		  //Probablement avec document.getElementById('xxxxxx_ID').value
+		  //Dans le serveur: prendre en capture les inputs de la barre et remplacer dans le field de spotifyApi.searchTracks()
 		  var SearchArr = new Array();
 		  spotifyApi.searchTracks(searchterm);
 		  .then(function(data) {
