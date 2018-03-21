@@ -46,6 +46,9 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
    //LOGIN
 app.get('/login', function(req, res) {
+	res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
 
   var state = SpotifyTools.generateRandomString(16);
   res.cookie(stateKey, state);
@@ -63,6 +66,9 @@ app.get('/login', function(req, res) {
 });
 
 app.get('/callback', function(req, res) {
+	res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
 
   // your application requests refresh and access tokens
   // after checking the state parameter
@@ -129,6 +135,9 @@ app.get('/callback', function(req, res) {
 });
 
 app.get('/refresh_token', function(req, res) {
+	res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
 
   // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
@@ -153,10 +162,24 @@ app.get('/refresh_token', function(req, res) {
 });
 
 app.post('/search', jsonParser, function(req, res {
+	res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
 	res.set('Content-Type', 'application/json');
 	//On prend ici le parametre pour la recherche, soit req.body.SearchName
 	//La fonction SongSearch de de SpotifyTools utilise cette donnée pour aller chercher les answers en forme json
     var answer = SearchTool.SongSearch(req.body.SearchName);
+    res.send(answer);
+}
+
+app.post('/addPlaylist, function(req, res {
+	res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+	res.set('Content-Type', 'application/json');
+	//On ajoute la playlist a la BD et en retour on renvoi la nouvelle BD pour un update live.
+	var playlistName = req.body.Name;
+    var answer = SearchTool.AddPlaylist();
     res.send(answer);
 }
 
