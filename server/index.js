@@ -51,7 +51,7 @@ app.get('/login', function(req, res) {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
 
-  var state = SpotifyTools.generateRandomString(16);
+  var state = SearchTool.generateRandomString(16);
   res.cookie(stateKey, state);
 
   //requests authorization
@@ -162,7 +162,7 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
-app.post('/search', jsonParser, function(req, res {
+app.post('/search', jsonParser, function(req, res) {
 	res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -171,9 +171,9 @@ app.post('/search', jsonParser, function(req, res {
 	//La fonction SongSearch de de SpotifyTools utilise cette donnée pour aller chercher les answers en forme json
     var answer = SearchTool.SongSearch(req.body.SearchName);
     res.send(answer);
-}
+});
 
-app.post('/addPlaylist', function(req, res {
+app.post('/addPlaylist', function(req, res) {
 	res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -182,7 +182,7 @@ app.post('/addPlaylist', function(req, res {
 	var currentUser = SearchTool.Username;
     var newList = SearchTool.AddPlaylist(currentUser,req.body.Name);
     res.send(answer);
-}
+});
 
   app.get('/api', function (req, res) {
      res.set('Content-Type', 'application/json');
