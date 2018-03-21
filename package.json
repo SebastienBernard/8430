@@ -16,7 +16,9 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
-    "spotify-web-api-node": "file:server/spotify-web-api-node"
+    "promise": "^8.0.1",
+    "spotify-web-api-node": "file:server/spotify-web-api-node",
+    "superagent": "^3.8.2"
   },
   "repository": {
     "type": "git",

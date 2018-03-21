@@ -14,8 +14,6 @@ module.exports = {
 	  return text;
 	};
 	
-	var searchterm;
-	
 	SongSearch: function (searchterm) {
 
 		var spotifyApi = new SpotifyWebApi({
@@ -30,7 +28,7 @@ module.exports = {
 		  
 		  //Dans le serveur: prendre en capture les inputs de la barre et remplacer dans le field de spotifyApi.searchTracks()
 		  var SearchArr = new Array();
-		  spotifyApi.searchTracks(searchterm);
+		  spotifyApi.searchTracks(searchterm)
 		  .then(function(data) {
 					for(i in data.body.tracks.items){
 						SearchArr.push({
